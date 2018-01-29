@@ -25,6 +25,7 @@ clientRouter.post('/user', function(req, res) {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/', (req, res, next)=>{
+  console.log('SERVICE HIT: '+req.url);
   res.send('SERVICE HIT: '+req.url);
 });
 
