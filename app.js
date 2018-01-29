@@ -17,7 +17,8 @@ clientRouter.get('/user', function(req, res) {
 });
 
 clientRouter.post('/user', function(req, res) {
-  res.send('POST FIRED');
+  console.log(req.body);
+  res.send(req.body);
 });
 
 
