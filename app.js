@@ -13,11 +13,12 @@ app.use(bodyParser.json());
 var clientRouter = express.Router();              // get an instance of the express Router
 
 clientRouter.get('/user', function(req, res) {
+  console.log('GET FIRED');
   res.send('GET FIRED');
 });
 
 clientRouter.post('/user', function(req, res) {
-  console.log(req.body);
+  console.log('POST FIRED: ' + req.body);
   res.send(req.body);
 });
 
