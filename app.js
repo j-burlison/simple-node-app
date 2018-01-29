@@ -25,7 +25,9 @@ clientRouter.post('/user', function(req, res) {
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/api/client', clientRouter);
+app.use('/', (req, res, next)=>{
+  res.send('SERVICE HIT');
+});
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8090,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
