@@ -7,18 +7,26 @@ var app = express();
 // this will let us get the data from a POST
 app.use(bodyParser.json());
 
+var user = { message: 'GET FIRED' };
+
 // ROUTES FOR OUR API
 // =============================================================================
 var clientRouter = express.Router();              // get an instance of the express Router
 
 clientRouter.get('/user', function(req, res) {
   console.log('GET FIRED');
-  res.send('GET FIRED');
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(user));
 });
 
 clientRouter.post('/user', function(req, res) {
   console.log('POST FIRED: ' + req.body);
-  res.send(req.body);
+
+  user = req.body;
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(user));
 });
 
 
@@ -26,7 +34,7 @@ clientRouter.post('/user', function(req, res) {
 // all of our routes will be prefixed with /api
 app.use('/api/client', clientRouter);
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8090,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 app.listen(port, ip);
