@@ -34,8 +34,11 @@ clientRouter.post('/user', function(req, res) {
 // all of our routes will be prefixed with /api
 app.use('/api/client', clientRouter);
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8090,
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
+// LOCALHOST Port
+var port = 8090;
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
