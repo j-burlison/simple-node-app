@@ -24,10 +24,11 @@ clientRouter.post('/user', function(req, res) {
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/', (req, res, next)=>{
-  console.log('SERVICE HIT: '+req.url);
-  res.send('SERVICE HIT: '+req.url);
-});
+app.use('/api/client', clientRouter);
+// app.use('/', (req, res, next)=>{
+//   console.log('SERVICE HIT: '+req.url);
+//   res.send('SERVICE HIT: '+req.url);
+// });
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
